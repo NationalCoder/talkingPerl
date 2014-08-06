@@ -10,7 +10,15 @@ $max_guess_count = 10;
 # Instruct the user
 print("I've picked a number between 1 and 100.\n");
 print("You have 10 tries to guess it.\n");
-
+if($gender eq M) {
+        print("So then lets get started Mr. $last!\n");
+} elsif($gender eq F) {
+        if($married eq 'n') {
+                print("So then lets get started Miss. $last!\n");
+        } elsif($married eq 'y') {
+                print("So then lets get started Mrs. $last!\n");
+        }
+}
 # Loop until the user guesses correctly
 while ($guess_count <= $max_guess_count)
 {

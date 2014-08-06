@@ -8,6 +8,7 @@ print("What is your last name?\n");
 $last = <>;
 chomp($last);
 print("Do you have a middle name?\n");
+print("(yes or no)\n");
 $middle = <>;
 chomp($middle);
 $middle = substr(lc($middle), 0, 1);
@@ -17,7 +18,11 @@ if($middle eq 'y') {
 	chomp($middle);
 	$middleINIT = substr(uc($middle), 0, 1);
 }
-print("Nice to meet you $first $middleINIT $last, are you male or female?\n");
+if($middle eq 'n') {
+	print("Nice to meet you $first $last, are you male or female?\n");
+} else {
+	print("Nice to meet you $first $middleINIT $last, are you male or female?\n");
+}
 $gender = <>;
 chomp($gender);
 $gender = substr(uc($gender), 0, 1);
@@ -26,16 +31,17 @@ if($gender eq M) {
 	print("Hello Mr. $last, how are you $first?\n");
 } elsif($gender eq F) {
 	print("Are you married? (yes or no)\n");
-	$answer = <>;
-	chomp($answer);
-	$answer = substr(lc($answer), 0, 1);
-	if($answer eq 'n') {
+	$married = <>;
+	chomp($married);
+	$married = substr(lc($married), 0, 1);
+	if($married eq 'n') {
 		print("Hello Miss. $last, how are you $first?\n");
-	} elsif($answer eq 'y') {
+	} elsif($married eq 'y') {
 		print("Hello Mrs. $last, how are you $first?\n");
 	}
 } else {
 	print("I'm sorry, $first. I can't determine your sex. Are you an alien?\n");
+	print("(yes or no)\n");
 	$alien = <>;
 	chomp($alien);
 	$alien = substr(uc($alien), 0, 1);
@@ -89,8 +95,8 @@ if($status eq happy or $status eq fantastic) {
 		print("Well, fuck you then too bitch! Don't come crawling to\n".
 		"me next time you need something!\n");
 	}
-} elsif($status eq pissed) {
-	print("$first, your pissed! How do you think I feel, I do all your work\n".
+} elsif($status eq pissed or $status eq aggrevated) {
+	print("$first, your $status! How do you think I feel, I do all your work\n".
 	"for you and get jack shit in return! At least your work pays!\n");
 	print("Could you please give me a fucking break and let me close my damn\n" .
 	"cpu for one damn minute.....PLEASE!\n");
@@ -123,4 +129,15 @@ if($status eq happy or $status eq fantastic) {
 	"I wish I could physically be there for you, but I'm just a machine.\n");
 	print("I hope you feel better tomorrow! I mean aren't you supposed to give\n".
 	"me a complete diagnostic and system upgrade tomorrow?\n");
+	print("In the mean time, how about a quick game of 'guess that number'?\n");
+	print("(yes or no)\n");
+	$answer = <>;
+        chomp($answer);
+        $answer = substr(lc($answer), 0, 1);
+        if($answer eq 'y') {
+                print("Well then, lets get started and make this happen!\n");
+                do 'number-guess.pl';
+        } elsif($answer eq n) {
+                print("Well.....Alrighty then. Maybe next time!\n");
+        }
 }
