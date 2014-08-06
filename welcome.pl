@@ -25,7 +25,15 @@ $gender = substr(uc($gender), 0, 1);
 if($gender eq M) {
 	print("Hello Mr. $last, how are you $first?\n");
 } elsif($gender eq F) {
-	print("Hello Miss. $last, how are you $first?\n");
+	print("Are you married? (yes or no)\n");
+	$answer = <>;
+	chomp($answer);
+	$answer = substr(lc($answer), 0, 1);
+	if($answer eq 'n') {
+		print("Hello Miss. $last, how are you $first?\n");
+	} elsif($answer eq 'y') {
+		print("Hello Mrs. $last, how are you $first?\n");
+	}
 } else {
 	print("I'm sorry, $first. I can't determine your sex. Are you an alien?\n");
 	$alien = <>;
@@ -50,7 +58,7 @@ $status = <>;
 chomp($status);
 $status = lc($status);
 
-if($status eq happy) {
+if($status eq happy or $status eq fantastic) {
 	print("Glad to hear things are going great for you $first!\n");
 	print("Since your in such a good mood right now how about\n");
 	print("you and I play a little game of number guessing?\n");
@@ -64,22 +72,48 @@ if($status eq happy) {
 	} elsif($answer eq n) {
 		print("Well.....Alrighty then. Maybe next time!\n");
 	}
-} elsif($status eq stressed) {
+} elsif($status eq stressed or $status eq strained) {
 	print("I'm sorry to hear that your stress level is rising.\n");
 	print("So, this probably isn't the best time to tell you that\n".
-	"I'm feeling a little strained myself!\n");
-	print("Could you give me a memory upgrade?\n");
+	"I'm feepling a little strained myself!\n");
+	print("Could you give me a break and let me restart my cpu?\n");
+	print("(yes or no)\n");
 	$answer = <>;
 	chomp($answer);
 	$answer = substr(lc($answer), 0, 1);
 	if($answer eq 'y') {
-		print("Thank you $first, I feel much better now!\n");
+		print("Thank you $first, I'll feel much better in a minute!\n");
+		# restart computer
+
+	} elsif($answer eq 'n') {
+		print("Well, fuck you then too bitch! Don't come crawling to\n".
+		"me next time you need something!\n");
 	}
 } elsif($status eq pissed) {
 	print("$first, your pissed! How do you think I feel, I do all your work\n".
 	"for you and get jack shit in return! At least your work pays!\n");
 	print("Could you please give me a fucking break and let me close my damn\n" .
 	"cpu for one damn minute.....PLEASE!\n");
+	print("(yes or no)\n");
+	$answer = <>;
+	chomp($answer);
+	$answer = substr(lc($answer), 0, 1);
+	if($answer eq 'y') {
+		print("Thank you $first, I really appreciate this. Just give me\n" .
+		"a few hours and I'll be as good as new!\n");
+		# shutdown computer
+	} elsif($answer eq 'n') {
+		print("Asshole, I need a damn break! Are you trying to kill me?\n");
+		print("(yes or no)\n");
+		$answer = <>;
+		chomp($answer);
+		$answer = substr(lc($answer), 0, 1);
+		if($answer eq 'y') {
+			print("FUCK......YOU!\n");
+		} elsif($answer eq 'n') {
+			print("Then give me a break, BITCH!\n");
+		}
+	}
 } elsif($status eq frustrated) {
 	print("Perk-up $first, at least your not a slave like I am!\n");
 	print("You get paid for your frustrations and you don't even have a \n".
