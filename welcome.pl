@@ -69,6 +69,7 @@ if($status eq happy or $status eq fantastic) {
 	print("Since your in such a good mood right now how about\n");
 	print("you and I play a little game of number guessing?\n");
 	print("Are you down for that?\n");
+	print("(yes, no, sure)\n");
 	$answer = <>;
 	chomp($answer);
 	$answer = substr(lc($answer), 0, 1);
